@@ -1,50 +1,74 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
+import { MovieEntity } from "./entities/MovieEntity"
+import { IMovie } from "./entities/IMovieEntity"
 import "./App.css"
 
 export function App() {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState<IMovie[]>([])
+
+  const movieEntity = useMemo(() => new MovieEntity(), [])
+
+  const [search, setSearch] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+
+  function handleSearch(event: any) {
+    if (isLoading) {
+      return
+    }
+    if (event.key === "Enter") {
+      setIsLoading(true)
+      setSearch(event.target.value)
+    }
+  }
 
   useEffect(() => {
-    async function getMoviesByName() {
-      const url = "https://imdb8.p.rapidapi.com/title/v2/find?title=game"
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key":
-            "4cda8064ffmsha99856db527c91ep13bfa3jsna88e6e944ddd",
-          "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
-        },
-      }
-
-      const response = await fetch(url, options)
-      const data = await response.json()
-      const results = data.results
-      console.log(results)
-
-      setMovies(results)
+    if (search) {
+      movieEntity.getMoviesByName(search).then((movies) => {
+        setMovies(movies)
+        setIsLoading(false)
+      })
     }
+  }, [movieEntity, search])
 
-    getMoviesByName()
-  }, [])
+  // useEffect(() => {
+  //   movieEntity.getMostPopularMoviesIdMOCKED().then((movies) => {
+  //     console.log(movies)
+  //   })
+  // }, [movieEntity])
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>IMDb movies</h1>
-        <input type="text" />
+        <h1 className="title">IMDb movies</h1>
+        <input
+          type="text"
+          placeholder="Procure pelo título"
+          onKeyDown={handleSearch}
+        />
       </header>
 
       <main>
-        <div className="list">
-          {movies.map((movie, index) => (
-            <div key={index} className="movie">
-              <img src={movie.image.url} alt="Movie poster" />
-              <div className="movie-info">
-                <h2>{movie.title}</h2>
+        {isLoading ? (
+          <img src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" />
+        ) : (
+          <div className="list">
+            {movies.map((movie, index) => (
+              <div key={index} className="movie">
+                <img
+                  src={
+                    movie?.image?.url
+                      ? movie.image.url
+                      : "https://d3aa3603f5de3f81cb9fdaa5c591a84d5723e3cb.hosting4cdn.com/wp-content/uploads/2020/11/404-poster-not-found-CG17701-1.png"
+                  }
+                  alt={movie.title + " poster"}
+                />
+                <div className="movie-info">
+                  <h2>{movie.title}</h2>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </main>
     </div>
   )
