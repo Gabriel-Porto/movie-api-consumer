@@ -5,10 +5,7 @@
 }
 
 .App {
-  margin: 0;
-  padding: 100px 220px;
-
-  background-color: #1e2021;
+  height: 100vh;
   box-sizing: border-box;
   font-family: sans-serif;
 }
@@ -17,9 +14,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  padding: 100px 220px;
+
+  background-color: #1e2021;
 }
 
-header input {
+.inputSearch {
   display: flex;
   justify-content: start;
   align-items: flex-start;
@@ -33,7 +34,7 @@ header input {
   background: #1e2021;
 
   font-size: 24px;
-  color: #fff
+  color: #fff;
 }
 
 .title {
@@ -71,6 +72,31 @@ header input {
   }
 }
 
+main {
+  height: 100%;
+  background: #1B3948
+}
+
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.home h1 {
+  color: #fff;
+  font-size: 48px;
+  width: 40%;
+}
+
+.home p {
+  color: #fff;
+}
+
 .movie {
   width: 100%;
   background-color: #1e2021;
@@ -98,5 +124,5 @@ header input {
 }
 
 .movie-info:hover {
-  color: #FF6347;
+  color: #ff6347;
 }
