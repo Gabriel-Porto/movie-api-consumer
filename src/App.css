@@ -14,8 +14,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 9rem;
 
-  padding: 100px 220px;
+  padding: 50px 220px;
 
   background-color: #1e2021;
 }
@@ -26,14 +27,14 @@ header {
   align-items: flex-start;
 
   width: 17rem;
-  height: 3.5rem;
+  height: 2.5rem;
   padding: 1.2rem 1.5rem;
 
   border-radius: 10px;
   border: 1px solid #1d5d86;
   background: #1e2021;
 
-  font-size: 24px;
+  font-size: 1rem;
   color: #fff;
 }
 
@@ -74,27 +75,40 @@ header {
 
 main {
   height: 100%;
-  background: #1B3948
+  background: #1b3948;
 }
-
 
 .home {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  height: 100%;
+  
+  height: 80%;
+  gap: 10rem;
 }
 
-.home h1 {
+.home div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+
+  gap: 1rem;
+}
+
+.home div h1 {
   color: #fff;
   font-size: 48px;
-  width: 40%;
+  width: 26.75rem;
 }
 
-.home p {
+.home div p {
   color: #fff;
+}
+
+.home img {
+  max-width: 100%;
+  height: auto;
 }
 
 .movie {

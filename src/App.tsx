@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { MovieEntity } from "./entities/MovieEntity"
 import { IMovie } from "./entities/IMovieEntity"
+import bannerImg from './assets/pngwing.com.png'
 import "./App.css"
 
 export function App() {
@@ -41,8 +42,7 @@ export function App() {
       <header className="App-header">
         <h1 className="title">IMDb movies</h1>
         <input
-            className="inputSearch"
-
+          className="inputSearch"
           type="text"
           placeholder="Procure pelo título"
           onKeyDown={handleSearch}
@@ -51,18 +51,23 @@ export function App() {
 
       <main>
         <section className="home">
-          <h1>
-            Esse é um projeto experimental para treinar o uso de API pelo
-            cliente.
-          </h1>
-          <p>Procure os filmes por nome: </p>
-          <input
-            className="inputSearch"
-            type="text"
-            placeholder="Procure pelo título"
-            onKeyDown={handleSearch}
-          />
+          <div>
+            <h1>
+              Esse é um projeto experimental para treinar o uso de API pelo
+              cliente.
+            </h1>
+            <p>Procure os filmes por nome: </p>
+            <input
+              className="inputSearch"
+              type="text"
+              placeholder="Procure pelo título"
+              onKeyDown={handleSearch}
+            />
+          </div>
+          <img src={bannerImg} alt="" />
         </section>
+
+        
         {isLoading ? (
           <img src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" />
         ) : (
