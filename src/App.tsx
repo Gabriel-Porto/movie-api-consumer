@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from "react"
 import { MovieEntity } from "./entities/MovieEntity"
 import { IMovie } from "./entities/IMovieEntity"
-import bannerImg from './assets/pngwing.com.png'
+import bannerImg from "./assets/pngwing.com.png"
+
 import "./App.css"
 
 export function App() {
   const [movies, setMovies] = useState<IMovie[]>([])
+  const [moviesIDforMostPopular, setMostPopularMoviesID] = useState([""])
 
   const movieEntity = useMemo(() => new MovieEntity(), [])
 
@@ -31,32 +33,26 @@ export function App() {
   //   }
   // }, [movieEntity, search])
 
-  // useEffect(() => {
-  //   movieEntity.getMostPopularMoviesIdMOCKED().then((movies) => {
-  //     console.log(movies)
-  //   })
-  // }, [movieEntity])
+  useEffect(() => {
+    movieEntity.getMockedMovies().then((movies) => {
+      setMovies(movies)
+    })
+  }, [movieEntity])
 
   return (
     <div className="App">
       <header className="App-header">
         <h1 className="title">IMDb movies</h1>
-        <input
-          className="inputSearch"
-          type="text"
-          placeholder="Procure pelo título"
-          onKeyDown={handleSearch}
-        />
       </header>
 
       <main>
         <section className="home">
-          <div>
+          <div className="heroText">
             <h1>
               Esse é um projeto experimental para treinar o uso de API pelo
               cliente.
             </h1>
-            <p>Procure os filmes por nome: </p>
+            <p>Procure os filmes por nome:</p>
             <input
               className="inputSearch"
               type="text"
@@ -67,9 +63,11 @@ export function App() {
           <img src={bannerImg} alt="" />
         </section>
 
-        
         {isLoading ? (
-          <img src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" />
+          <img
+            className="spinner"
+            src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
+          />
         ) : (
           <div className="list">
             {movies.map((movie, index) => (
@@ -84,6 +82,7 @@ export function App() {
                 />
                 <div className="movie-info">
                   <h2>{movie.title}</h2>
+                  <p>{movie.year}</p>
                 </div>
               </div>
             ))}
