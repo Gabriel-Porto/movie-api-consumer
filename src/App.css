@@ -209,7 +209,7 @@ main {
 }
 
 .movie:hover .movie-info {
-  top: 25rem;
+  top: 25.6rem;
   opacity: 1;
   transform: scale(1.05);
 }
