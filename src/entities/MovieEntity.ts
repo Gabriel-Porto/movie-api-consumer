@@ -1,4 +1,4 @@
-import { IMovie, IMovieEntity } from "./IMovieEntity"
+import { IMovie, IMovieEntity, IMovieDetails } from "./IMovieEntity"
 
 export class MovieEntity implements IMovieEntity {
   public async getMockedMovies(): Promise<IMovie[]> {
@@ -262,110 +262,56 @@ export class MovieEntity implements IMovieEntity {
 
     return results
   }
-
-  public async getMostPopularMoviesIdMOCKED(): Promise<string[]> {
-    return [
-      "/title/tt15398776/",
-      "/title/tt1517268/",
-      "/title/tt21276878/",
-      "/title/tt17024450/",
-      "/title/tt5971474/",
-      "/title/tt14230458/",
-      "/title/tt10160976/",
-      "/title/tt15354916/",
-      "/title/tt8589698/",
-      "/title/tt1462764/",
-      "/title/tt15671028/",
-      "/title/tt21454134/",
-      "/title/tt1001520/",
-      "/title/tt0439572/",
-      "/title/tt15153532/",
-      "/title/tt17527468/",
-      "/title/tt22687790/",
-      "/title/tt7599146/",
-      "/title/tt9362930/",
-      "/title/tt4495098/",
-      "/title/tt10731256/",
-      "/title/tt10638522/",
-      "/title/tt9224104/",
-      "/title/tt9362722/",
-      "/title/tt6791350/",
-      "/title/tt0455944/",
-      "/title/tt1136617/",
-      "/title/tt2906216/",
-      "/title/tt10172266/",
-      "/title/tt4589218/",
-      "/title/tt5814060/",
-      "/title/tt3758542/",
-      "/title/tt10276482/",
-      "/title/tt3427252/",
-      "/title/tt13560574/",
-      "/title/tt13238346/",
-      "/title/tt21103300/",
-      "/title/tt5537002/",
-      "/title/tt13603966/",
-      "/title/tt9603212/",
-      "/title/tt1877830/",
-      "/title/tt14230388/",
-      "/title/tt11663228/",
-      "/title/tt8080204/",
-      "/title/tt6718170/",
-      "/title/tt3291150/",
-      "/title/tt15789038/",
-      "/title/tt17351924/",
-      "/title/tt0963794/",
-      "/title/tt15257160/",
-      "/title/tt0816692/",
-      "/title/tt9639470/",
-      "/title/tt11858890/",
-      "/title/tt9100018/",
-      "/title/tt3766354/",
-      "/title/tt9764362/",
-      "/title/tt10640346/",
-      "/title/tt0468569/",
-      "/title/tt21807222/",
-      "/title/tt10366206/",
-      "/title/tt22041854/",
-      "/title/tt8337264/",
-      "/title/tt2543164/",
-      "/title/tt13375076/",
-      "/title/tt20414642/",
-      "/title/tt0111161/",
-      "/title/tt19267924/",
-      "/title/tt12921446/",
-      "/title/tt0068646/",
-      "/title/tt15339570/",
-      "/title/tt21087084/",
-      "/title/tt1596363/",
-      "/title/tt7405458/",
-      "/title/tt14998742/",
-      "/title/tt0259446/",
-      "/title/tt0077416/",
-      "/title/tt5433140/",
-      "/title/tt5090568/",
-      "/title/tt4873118/",
-      "/title/tt13833688/",
-      "/title/tt1630029/",
-      "/title/tt14509110/",
-      "/title/tt0241527/",
-      "/title/tt1160419/",
-      "/title/tt4779682/",
-      "/title/tt2119532/",
-      "/title/tt9048804/",
-      "/title/tt10275534/",
-      "/title/tt15768848/",
-      "/title/tt15351980/",
-      "/title/tt14549270/",
-      "/title/tt14209916/",
-      "/title/tt1375666/",
-      "/title/tt0993846/",
-      "/title/tt13345606/",
-      "/title/tt6723592/",
-      "/title/tt5535276/",
-      "/title/tt1745960/",
-      "/title/tt10016180/",
-      "/title/tt21909764/"
-    ]
-  }
   
+  public async getMovieDetailsByIdMOCKED(): Promise<IMovieDetails> {
+    return {
+      "id": "/title/tt7740496/",
+      "title": {
+        "@type": "imdb.api.title.title",
+        "id": "/title/tt7740496/",
+        "image": {
+          "height": 1500,
+          "id": "/title/tt7740496/images/rm749334273",
+          "url": "https://m.media-amazon.com/images/M/MV5BOTI4NDhhNGEtZjQxZC00ZTRmLThmZTctOGJmY2ZlOTc0ZGY0XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+          "width": 1012
+        },
+        "runningTimeInMinutes": 150,
+        "title": "Nightmare Alley",
+        "titleType": "movie",
+        "year": 2021
+      },
+      "certificates": {
+        "US": [
+          {
+            "certificate": "R",
+            "certificateNumber": 53284,
+            "ratingReason": "Rated R for strong/bloody violence, some sexual content, nudity and language",
+            "ratingsBody": "MPAA",
+            "country": "US"
+          }
+        ]
+      },
+      "ratings": {
+        "canRate": true,
+        "rating": 7,
+        "ratingCount": 156982,
+        "topRank": 2426
+      },
+      "genres": [
+        "Crime",
+        "Drama",
+        "Thriller"
+      ],
+      "releaseDate": "2021-12-17",
+      "plotOutline": {
+        "id": "/title/tt7740496/plot/po3644569",
+        "text": "A grifter working his way up from low-ranking carnival worker to lauded psychic medium matches wits with a psychologist bent on exposing him."
+      },
+      "plotSummary": {
+        "author": "Wiki",
+        "id": "/title/tt7740496/plot/ps6343636",
+        "text": "Stan burns down his home and takes a job as a carny with a traveling carnival. Stan is disturbed at how any man could sink to the level of performing as a geek. Clem explains that he seeks out alcoholic or drug-addicted men with troubled pasts, and lures them in with promises of a \"temporary\" job and opium-laced alcohol. He then uses their dependence until they sink into madness and depravity, thus creating a new geek. Stan also works with clairvoyant act \"Madame Zeena\" and her alcoholic husband, Pete. He and Zeena warn Stan not to ever use these skills otherwise people get hurt. Meanwhile Stan becomes attracted to fellow performer Molly and approaches her with an idea for a two-person act away from the carnival."
+      }
+    }
+  }
 }
