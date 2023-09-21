@@ -61,4 +61,5 @@ export abstract class IMovieEntity {
   public abstract getMockedMovies(): Promise<IMovie[]>
   public abstract getMoviesByName(title: string): Promise<IMovie[]>
   public abstract getMovieDetailsByIdMOCKED(): Promise<IMovieDetails>
+  public abstract getMovieDetailsById(id: string): Promise<IMovieDetails>
 }

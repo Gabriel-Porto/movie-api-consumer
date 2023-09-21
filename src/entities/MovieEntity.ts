@@ -262,56 +262,70 @@ export class MovieEntity implements IMovieEntity {
 
     return results
   }
-  
+
   public async getMovieDetailsByIdMOCKED(): Promise<IMovieDetails> {
     return {
-      "id": "/title/tt7740496/",
-      "title": {
+      id: "/title/tt7740496/",
+      title: {
         "@type": "imdb.api.title.title",
-        "id": "/title/tt7740496/",
-        "image": {
-          "height": 1500,
-          "id": "/title/tt7740496/images/rm749334273",
-          "url": "https://m.media-amazon.com/images/M/MV5BOTI4NDhhNGEtZjQxZC00ZTRmLThmZTctOGJmY2ZlOTc0ZGY0XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
-          "width": 1012
+        id: "/title/tt7740496/",
+        image: {
+          height: 1500,
+          id: "/title/tt7740496/images/rm749334273",
+          url: "https://m.media-amazon.com/images/M/MV5BOTI4NDhhNGEtZjQxZC00ZTRmLThmZTctOGJmY2ZlOTc0ZGY0XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+          width: 1012,
         },
-        "runningTimeInMinutes": 150,
-        "title": "Nightmare Alley",
-        "titleType": "movie",
-        "year": 2021
+        runningTimeInMinutes: 150,
+        title: "Nightmare Alley",
+        titleType: "movie",
+        year: 2021,
       },
-      "certificates": {
-        "US": [
+      certificates: {
+        US: [
           {
-            "certificate": "R",
-            "certificateNumber": 53284,
-            "ratingReason": "Rated R for strong/bloody violence, some sexual content, nudity and language",
-            "ratingsBody": "MPAA",
-            "country": "US"
-          }
-        ]
+            certificate: "R",
+            certificateNumber: 53284,
+            ratingReason:
+              "Rated R for strong/bloody violence, some sexual content, nudity and language",
+            ratingsBody: "MPAA",
+            country: "US",
+          },
+        ],
       },
-      "ratings": {
-        "canRate": true,
-        "rating": 7,
-        "ratingCount": 156982,
-        "topRank": 2426
+      ratings: {
+        canRate: true,
+        rating: 7,
+        ratingCount: 156982,
+        topRank: 2426,
       },
-      "genres": [
-        "Crime",
-        "Drama",
-        "Thriller"
-      ],
-      "releaseDate": "2021-12-17",
-      "plotOutline": {
-        "id": "/title/tt7740496/plot/po3644569",
-        "text": "A grifter working his way up from low-ranking carnival worker to lauded psychic medium matches wits with a psychologist bent on exposing him."
+      genres: ["Crime", "Drama", "Thriller"],
+      releaseDate: "2021-12-17",
+      plotOutline: {
+        id: "/title/tt7740496/plot/po3644569",
+        text: "A grifter working his way up from low-ranking carnival worker to lauded psychic medium matches wits with a psychologist bent on exposing him.",
       },
-      "plotSummary": {
-        "author": "Wiki",
-        "id": "/title/tt7740496/plot/ps6343636",
-        "text": "Stan burns down his home and takes a job as a carny with a traveling carnival. Stan is disturbed at how any man could sink to the level of performing as a geek. Clem explains that he seeks out alcoholic or drug-addicted men with troubled pasts, and lures them in with promises of a \"temporary\" job and opium-laced alcohol. He then uses their dependence until they sink into madness and depravity, thus creating a new geek. Stan also works with clairvoyant act \"Madame Zeena\" and her alcoholic husband, Pete. He and Zeena warn Stan not to ever use these skills otherwise people get hurt. Meanwhile Stan becomes attracted to fellow performer Molly and approaches her with an idea for a two-person act away from the carnival."
-      }
+      plotSummary: {
+        author: "Wiki",
+        id: "/title/tt7740496/plot/ps6343636",
+        text: 'Stan burns down his home and takes a job as a carny with a traveling carnival. Stan is disturbed at how any man could sink to the level of performing as a geek. Clem explains that he seeks out alcoholic or drug-addicted men with troubled pasts, and lures them in with promises of a "temporary" job and opium-laced alcohol. He then uses their dependence until they sink into madness and depravity, thus creating a new geek. Stan also works with clairvoyant act "Madame Zeena" and her alcoholic husband, Pete. He and Zeena warn Stan not to ever use these skills otherwise people get hurt. Meanwhile Stan becomes attracted to fellow performer Molly and approaches her with an idea for a two-person act away from the carnival.',
+      },
     }
+  }
+
+  public async getMovieDetailsById(id: string): Promise<IMovieDetails> {
+    const url = `https://imdb8.p.rapidapi.com/title/get-overview-details?tconst=${id}&currentCountry=US`
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "4cda8064ffmsha99856db527c91ep13bfa3jsna88e6e944ddd",
+        "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+      },
+    }
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+    const results = data as IMovieDetails
+
+    return results
   }
 }

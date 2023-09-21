@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const MovieDetailsContainer = styled.div`
-  height: 100vh;
+  height: 100%;
   background-color: #f3f4f6;
 
   display: flex;
@@ -10,7 +10,7 @@ export const MovieDetailsContainer = styled.div`
   gap: 3.8rem;
 
   img {
-    height: 100%;
+    max-height: 100vh;
     width: 68.2rem;
   }
 `
@@ -20,6 +20,7 @@ export const MovieInfo = styled.section`
 
   a {
     margin-top: 3.5rem;
+    width: fit-content;
 
     display: flex;
     align-items: center;
@@ -66,18 +67,31 @@ export const MovieInfo = styled.section`
     font-size: 2rem;
   }
 
-  .rating {
-    display: flex;
-    align-items: center;
-  }
-
   .summary {
     margin-top: 2rem;
     margin-right: 7.5rem;
+
+    font-size: 2rem;
   }
 
   .releaseDate {
     margin-top: 2rem;
-    
   }
+`
+
+export const Rating = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin-right: 2rem;
+`
+
+export const Loading = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  height: 100vh;
 `

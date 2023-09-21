@@ -2,10 +2,12 @@ import { useEffect, useMemo, useState } from "react"
 import { MovieEntity } from "../../entities/MovieEntity"
 import { IMovie } from "../../entities/IMovieEntity"
 
-
 import { HomeContainer } from "./styles"
 import bannerImg from "../../assets/pngwing.com.png"
 import searchIcon from "../../assets/magnifying-glass.png"
+
+import { Link } from "react-router-dom"
+import { Spinner } from "../../components/Spinner"
 
 export function Home() {
   const [movies, setMovies] = useState<IMovie[]>([])
@@ -14,16 +16,6 @@ export function Home() {
 
   const [search, setSearch] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-
-  function handleSearch(event: any) {
-    if (isLoading) {
-      return
-    }
-    if (event.key === "Enter") {
-      setIsLoading(true)
-      setSearch(event.target.value)
-    }
-  }
 
   useEffect(() => {
     if (search) {
@@ -39,6 +31,18 @@ export function Home() {
       setMovies(movies)
     })
   }, [movieEntity])
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function handleSearch(event: any) {
+    if (isLoading) {
+      return
+    }
+    if (event.key === "Enter") {
+      setIsLoading(true)
+      setSearch(event.target.value)
+    }
+  }
+
   return (
     <HomeContainer>
       <header className="App-header">
@@ -67,27 +71,29 @@ export function Home() {
           <img src={bannerImg} alt="" />
         </section>
         {isLoading ? (
-          <img
-            className="spinner"
-            src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
-          />
+          <Spinner size={200} />
         ) : (
           <div className="list">
             {movies.map((movie) => (
-              <div key={movie.id} className="movie">
-                <img
-                  src={
-                    movie?.image?.url
-                      ? movie.image.url
-                      : "https://d3aa3603f5de3f81cb9fdaa5c591a84d5723e3cb.hosting4cdn.com/wp-content/uploads/2020/11/404-poster-not-found-CG17701-1.png"
-                  }
-                  alt={movie.title + " poster"}
-                />
-                <div className="movie-info">
-                  <h2>{movie.title}</h2>
-                  <p>{movie.year}</p>
+              <Link
+                to={"/MovieDetails/" + movie.id.split("title/")[1].slice(0, -1)}
+                key={movie.id}
+              >
+                <div key={movie.id} className="movie">
+                  <img
+                    src={
+                      movie?.image?.url
+                        ? movie.image.url
+                        : "https://d3aa3603f5de3f81cb9fdaa5c591a84d5723e3cb.hosting4cdn.com/wp-content/uploads/2020/11/404-poster-not-found-CG17701-1.png"
+                    }
+                    alt={movie.title + " poster"}
+                  />
+                  <div className="movie-info">
+                    <h2>{movie.title}</h2>
+                    <p>{movie.year}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

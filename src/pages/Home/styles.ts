@@ -109,12 +109,6 @@ export const HomeContainer = styled.div`
     flex-direction: column;
   }
 
-  .spinner {
-    margin-top: 20rem;
-    height: 15rem;
-    width: 15rem;
-  }
-
   .heroText {
     display: flex;
     align-items: start;
