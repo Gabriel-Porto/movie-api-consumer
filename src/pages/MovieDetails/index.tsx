@@ -3,7 +3,7 @@ import { MovieEntity } from "../../entities/MovieEntity"
 import { IMovieDetails } from "../../entities/IMovieEntity"
 import { useParams, useNavigate, Link } from "react-router-dom"
 
-import { MovieDetailsContainer, MovieInfo, Rating, Loading } from "./styles"
+import { MovieInfo, Rating, Loading } from "./styles"
 import { Star, ArrowUDownLeft } from "@phosphor-icons/react"
 import { Spinner } from "../../components/Spinner"
 
@@ -44,31 +44,27 @@ export function MovieDetails() {
           <Spinner size={70} />
         </Loading>
       ) : (
-        <MovieDetailsContainer>
-          <img src={movieDisplayed?.title.image.url} alt="" />
-          <MovieInfo>
-            {id}
-            <Link to="/">
-              <ArrowUDownLeft size={28} color="#ff6347" weight="fill" /> Home
-            </Link>
-            <div className="header">
-              <h1>{movieDisplayed?.title.title}</h1>
-              <Rating>
-                <Star size={24} color="#f6ca2a" weight="fill" />
-                <p>{movieDisplayed?.ratings.rating}/10</p>
-              </Rating>
-            </div>
-            <div className="genres">
-              {movieDisplayed?.genres.map((genre, index) => (
-                <span key={index}>{genre}</span>
-              ))}
-            </div>
-            <p className="releaseDate">
-              Released on {movieDisplayed?.releaseDate}
-            </p>
-            <p className="summary">{movieDisplayed?.plotSummary.text}</p>
-          </MovieInfo>
-        </MovieDetailsContainer>
+        <MovieInfo>
+          <Link to="/">
+            <ArrowUDownLeft size={28} color="#ff6347" weight="fill" /> Home
+          </Link>
+          <div className="header">
+            <h1>{movieDisplayed?.title.title}</h1>
+            <Rating>
+              <Star size={24} color="#f6ca2a" weight="fill" />
+              <p>{movieDisplayed?.ratings.rating}/10</p>
+            </Rating>
+          </div>
+          <div className="genres">
+            {movieDisplayed?.genres.map((genre, index) => (
+              <span key={index}>{genre}</span>
+            ))}
+          </div>
+          <p className="releaseDate">
+            Released on {movieDisplayed?.releaseDate}
+          </p>
+          <p className="summary">{movieDisplayed?.plotSummary.text}</p>
+        </MovieInfo>
       )}
     </>
   )

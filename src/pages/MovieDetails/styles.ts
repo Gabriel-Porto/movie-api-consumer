@@ -1,22 +1,8 @@
 import styled from "styled-components"
 
-export const MovieDetailsContainer = styled.div`
-  height: 100%;
-  background-color: #f3f4f6;
-
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  gap: 3.8rem;
-
-  img {
-    max-height: 100vh;
-    width: 68.2rem;
-  }
-`
-
 export const MovieInfo = styled.section`
-  flex: 1;
+  margin: 0 auto;
+  width: 80%;
 
   a {
     margin-top: 3.5rem;
@@ -34,7 +20,8 @@ export const MovieInfo = styled.section`
   .header {
     display: flex;
     align-items: center;
-    gap: 9rem;
+    justify-content: space-between;
+
     margin-top: 3.5rem;
   }
 
@@ -53,9 +40,17 @@ export const MovieInfo = styled.section`
   .genres {
     display: flex;
     align-items: center;
-    gap: 2.2rem;
+    justify-content: start;
+    gap: 1rem;
 
     margin-top: 2rem;
+  }
+
+  @media (max-width: 375px) {
+    .genres {
+      flex-direction: column;
+      align-items: start;
+    }
   }
 
   span {
@@ -69,12 +64,12 @@ export const MovieInfo = styled.section`
 
   .summary {
     margin-top: 2rem;
-    margin-right: 7.5rem;
 
     font-size: 2rem;
   }
 
   .releaseDate {
+    font-size: 1.6rem;
     margin-top: 2rem;
   }
 `
@@ -82,8 +77,6 @@ export const MovieInfo = styled.section`
 export const Rating = styled.div`
   display: flex;
   align-items: center;
-
-  margin-right: 2rem;
 `
 
 export const Loading = styled.div`

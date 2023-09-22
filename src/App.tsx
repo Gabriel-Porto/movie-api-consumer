@@ -1,4 +1,4 @@
-import { GlobalStyle } from "./global"
+import { GlobalStyle } from "./styles/global"
 import { Home } from "./pages/Home"
 import { MovieDetails } from "./pages/MovieDetails"
 import { BrowserRouter, Routes, Route } from "react-router-dom"

@@ -14,11 +14,12 @@ export const GlobalStyle = createGlobalStyle`
 html {
   /* 10px */
   font-size: 62.5%;
+  width: 100vw;
 }
 
 body {
-  background-color: #1f2937;
-  color: #f3f4f6;
+  background-color: #f3f4f6;
+  color: #1f2937;
   -webkit-font-smoothing: antialiased;
 }
 

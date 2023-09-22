@@ -1,24 +1,91 @@
 import styled from "styled-components"
+import { device } from "../../styles/responsivity"
 
 export const HomeContainer = styled.div`
-  header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 9rem;
+  width: 100%;
+
+  background-color: #1d5d86;
+
+  h1 {
+    color: #ff6347;
+    font-size: 3rem;
+  }
+`
+
+export const Hero = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 6.5rem;
+
+  h1 {
+    max-width: 48rem;
+    font-size: 3.6rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1023px) {
+    img {
+      display: none;
+    }
+  }
+
+  img {
+    max-width: 30rem;
+  }
+
+  .heroText {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin-inline: 2rem;
+
+    gap: 2.5rem;
+    flex-direction: column;
+  }
+
+  .heroText p {
+    font-size: 2.4rem;
+  }
+
+  .inputContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 9rem;
-    width: 100%;
+    justify-content: center;
 
-    padding: 5rem 22rem;
+    position: relative;
+  }
 
-    background-color: #030712;
+  .inputContainer button {
+    position: absolute;
+    left: 24rem;
+    height: 4rem;
+    width: 4rem;
+
+    border-radius: 0 10px 10px 0;
+    border: none;
+    background: #ff6347;
+
+    padding: 0.5rem;
+
+    padding-left: 1.2rem;
+
+    cursor: pointer;
   }
 
   .inputSearch {
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
-
-    width: 30rem;
+    width: 25rem;
     height: 4rem;
     padding: 1.2rem 1.5rem;
 
@@ -34,115 +101,38 @@ export const HomeContainer = styled.div`
   .inputSearch:hover {
     outline: 1px solid #ff6347;
   }
+`
 
-  .inputContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+export const MovieList = styled.section`
+  display: grid;
+  grid-template-columns: auto minmax(1, 1fr);
+  gap: 3rem;
+  margin-top: 11rem;
 
-    position: relative;
-  }
+  transition: 2s;
 
-  .inputContainer button {
-    position: absolute;
-    left: 29rem;
-
-    border-radius: 0 10px 10px 0;
-    border: none;
-    background: #ff6347;
-
-    height: 4rem;
-    padding: 0.5rem;
-
-    padding-left: 1.2rem;
-
-    cursor: pointer;
-  }
-
-  .title {
-    color: #f3f4f6;
-    font-size: 4.8rem;
-  }
-
-  .list {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 3rem;
-    margin-top: 3rem;
-  }
-
-  @media (min-width: 768px) {
-    .list {
-      grid-template-columns: repeat(3, 1fr);
+  @media (min-width: 500px) {
+    & {
+      grid-template-columns: auto repeat(1, 1fr);
     }
   }
 
-  @media (min-width: 1100px) {
-    .list {
-      grid-template-columns: repeat(4, 1fr);
+  @media ${device.tablet} {
+    & {
+      grid-template-columns: auto repeat(2, 1fr);
     }
   }
 
-  @media (max-width: 1100px) {
-    .home img {
-      display: none;
+  @media ${device.laptop} {
+    & {
+      grid-template-columns: auto repeat(3, 1fr);
     }
   }
 
-  @media (min-width: 1400px) {
-    .list {
-      grid-template-columns: repeat(5, 1fr);
+  @media ${device.laptopL} {
+    & {
+      grid-template-columns: auto repeat(4, 1fr);
     }
-  }
-
-  @media (min-width: 1800px) {
-    .list {
-      grid-template-columns: repeat(6, 1fr);
-    }
-  }
-
-  main {
-    padding: 10rem 20rem 5rem;
-
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .heroText {
-    display: flex;
-    align-items: start;
-    justify-content: center;
-
-    gap: 2.5rem;
-    flex-direction: column;
-  }
-
-  .heroText p {
-    font-size: 2.4rem;
-  }
-
-  .home {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    height: 35.2rem;
-    gap: 22rem;
-
-    margin-bottom: 7.5rem;
-  }
-
-  .home h1 {
-    color: #fff;
-    font-size: 3.6rem;
-    font-weight: 500;
-    width: 44.5rem;
-  }
-
-  .home img {
-    max-width: 70rem;
-    height: auto;
   }
 
   .movie {
