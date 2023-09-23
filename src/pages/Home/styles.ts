@@ -42,7 +42,7 @@ export const Hero = styled.section`
   }
 
   img {
-    max-width: 30rem;
+    max-width: 50rem;
   }
 
   .heroText {

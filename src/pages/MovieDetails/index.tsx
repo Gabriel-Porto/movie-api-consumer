@@ -9,7 +9,6 @@ import { Spinner } from "../../components/Spinner"
 
 export function MovieDetails() {
   const { id } = useParams()
-
   const navigate = useNavigate()
 
   const [isLoading, setLoading] = useState(true)
@@ -20,7 +19,7 @@ export function MovieDetails() {
 
   useEffect(() => {
     if (id) {
-      movieEntity.getMovieDetailsByIdMOCKED().then((movie) => {
+      movieEntity.getMovieDetailsById(id).then((movie) => {
         setTimeout(() => {
           setMovieDisplayed(movie)
         }, 500)
