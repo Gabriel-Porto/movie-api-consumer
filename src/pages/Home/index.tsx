@@ -11,7 +11,6 @@ import { Spinner } from "../../components/Spinner"
 
 export function Home() {
   const [movies, setMovies] = useState<IMovie[]>([])
-
   const movieEntity = useMemo(() => new MovieEntity(), [])
 
   const [search, setSearch] = useState("")
@@ -24,8 +23,9 @@ export function Home() {
         setIsLoading(false)
       })
     }
-  }, [movieEntity, search])
-
+  }, [movieEntity, search, isLoading])
+  
+  //TO GET MOCKED MOVIE AND NOT USE THE API.
   // useEffect(() => {
   //   movieEntity.getMockedMovies().then((movies) => {
   //     setMovies(movies)
@@ -51,13 +51,13 @@ export function Home() {
 
       <Hero>
         <div className="heroText">
-          <h1>Esse é um projeto para treinar o uso de API pelo client-side.</h1>
-          <p>Procure os filmes por nome:</p>
+          <h1>This is a project to practice client-side API use.</h1>
+          <p>Search films by title:</p>
           <div className="inputContainer">
             <input
               className="inputSearch"
               type="text"
-              placeholder="Procure pelo título"
+              placeholder="Insert title here"
               onKeyDown={handleSearch}
             />
             <button onClick={handleSearch}>
